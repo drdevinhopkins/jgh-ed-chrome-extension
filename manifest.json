@@ -1,0 +1,40 @@
+{
+    "manifest_version": 2,
+    "name": "JGH ED",
+    "description": "JGH Emergency Department",
+    "version": "0.2",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://rxliteprod.ccomtl.rtss.qc.ca/PANDAWebRx.aspx*"
+            ],
+            "js": [
+                "home-timer.js"
+            ],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://rxliteprod.ccomtl.rtss.qc.ca/PatientDetail.aspx*"
+            ],
+            "js": [
+                "patient-docs.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "tabs",
+        "<all_urls>",
+        "activeTab"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com; object-src 'self'"
+}
